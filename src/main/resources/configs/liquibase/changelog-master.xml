@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <include file="/configs/liquibase/changes/20230727_v1_create_table_yoo_events.xml"/>
+    <include file="/configs/liquibase/changes/20230727_v2_create_table_yoo_orders.xml"/>
+    <include file="/configs/liquibase/changes/20230727_v3_create_table_yoo_payment_log.xml"/>
+    <include file="/configs/liquibase/changes/20230727_v4_create_table_yoo_recurrent_payments.xml"/>
+    <include file="/configs/liquibase/changes/20230727_v5_create_table_yoo_subscription_move_history.xml"/>
+    <include file="/configs/liquibase/changes/20230727_v6_create_table_yoo_subscription_states.xml"/>
+    <include file="/configs/liquibase/changes/20230727_v7_create_table_yoo_subscriptions.xml"/>
+    <include file="/configs/liquibase/changes/20230727_v8_create_yoo_tables_constraints.xml"/>
+</databaseChangeLog>

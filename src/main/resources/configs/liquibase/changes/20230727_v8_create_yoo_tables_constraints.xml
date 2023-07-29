@@ -1,0 +1,111 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="ali" id="v8">
+        <createIndex indexName="idx_yoo_recurrent_payments_subscription_id" tableName="yoo_recurrent_payments">
+            <column name="subscription_id"/>
+        </createIndex>
+
+        <createIndex indexName="idx_yoo_recurrent_payments_order_id" tableName="yoo_recurrent_payments">
+            <column name="order_id"/>
+        </createIndex>
+
+        <createIndex indexName="idx_yoo_subscriptions_initial_order_id" tableName="yoo_subscriptions">
+            <column name="initial_order_id"/>
+        </createIndex>
+
+        <createIndex indexName="idx_order_id" tableName="yoo_events">
+            <column name="order_id"/>
+        </createIndex>
+
+        <createIndex indexName="idx_order_id" tableName="yoo_orders">
+            <column name="order_id"/>
+        </createIndex>
+
+        <createIndex indexName="idx_created_at" tableName="yoo_recurrent_payments">
+            <column name="created_at"/>
+        </createIndex>
+
+        <createIndex indexName="idx_ts_src_user_id_dst_user_id" tableName="yoo_subscription_move_history">
+            <column name="ts"/>
+            <column name="src_user_id"/>
+            <column name="dst_user_id"/>
+        </createIndex>
+
+        <createIndex indexName="idx_user_id" tableName="yoo_subscriptions">
+            <column name="user_id"/>
+        </createIndex>
+
+        <createIndex indexName="idx_type_event" tableName="yoo_events">
+            <column name="type"/>
+            <column name="event"/>
+        </createIndex>
+
+        <createIndex indexName="idx_created_at" tableName="yoo_orders">
+            <column name="created_at"/>
+        </createIndex>
+
+        <createIndex indexName="idx_updated_at" tableName="yoo_recurrent_payments">
+            <column name="updated_at"/>
+        </createIndex>
+        <createIndex indexName="idx_created_at" tableName="yoo_subscriptions">
+            <column name="created_at"/>
+        </createIndex>
+
+        <createIndex indexName="idx_ts" tableName="yoo_events">
+            <column name="ts"/>
+        </createIndex>
+
+        <createIndex indexName="idx_updated_at_in_progress" tableName="yoo_orders">
+            <column name="updated_at"/>
+            <column name="in_progress"/>
+        </createIndex>
+
+        <createIndex indexName="idx_canceled_at" tableName="yoo_subscriptions">
+            <column name="canceled_at"/>
+        </createIndex>
+
+        <createIndex indexName="idx_in_progress_paid" tableName="yoo_orders">
+            <column name="in_progress"/>
+            <column name="paid"/>
+        </createIndex>
+
+        <createIndex indexName="idx_next_payment_ts" tableName="yoo_subscriptions">
+            <column name="next_payment_ts"/>
+        </createIndex>
+
+        <createIndex indexName="idx_product_id" tableName="yoo_orders">
+            <column name="product_id"/>
+        </createIndex>
+
+        <createIndex indexName="idx_yoo_payment_log_payment_id" tableName="yoo_payment_log">
+            <column name="payment_id"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="subscription_id" baseTableName="yoo_recurrent_payments"
+                                 constraintName="fk_yoo_recurrent_payments_subscription_id" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="id" referencedTableName="yoo_subscriptions" validate="true"/>
+
+        <addForeignKeyConstraint baseColumnNames="order_id" baseTableName="yoo_recurrent_payments"
+                                 constraintName="fk_yoo_recurrent_payments_order_id" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="id" referencedTableName="yoo_orders" validate="true"/>
+
+        <addForeignKeyConstraint baseColumnNames="initial_order_id" baseTableName="yoo_subscriptions"
+                                 constraintName="fk_yoo_subscriptions_initial_order_id" deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id"
+                                 referencedTableName="yoo_orders" validate="true"/>
+
+        <addForeignKeyConstraint baseColumnNames="subscription_id" baseTableName="yoo_subscription_states"
+                                 constraintName="fk_yoo_subscription_states_subscription_id" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="id" referencedTableName="yoo_subscriptions" validate="true"/>
+
+        <addForeignKeyConstraint baseColumnNames="payment_id" baseTableName="yoo_payment_log"
+                                 constraintName="fk_yoo_payment_log_payment_id" deferrable="false" initiallyDeferred="false"
+                                 onDelete="CASCADE" onUpdate="RESTRICT" referencedColumnNames="id"
+                                 referencedTableName="yoo_recurrent_payments" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
